@@ -1,6 +1,6 @@
 VERSION = "0.2.0"
 
-class MainController < NSObject
+class MainController
   
   attr_accessor :tab, :doc, :frame, :terminal, :webView, :container
   

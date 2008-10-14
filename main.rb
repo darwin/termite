@@ -1,13 +1,3 @@
-#
-# rb_main.rb
-# termite
-#
-# Created by Antonin Hildebrand on 9/20/08.
-# Copyright __MyCompanyName__ 2008. All rights reserved.
-#
-
-# Loading the Cocoa framework. If you need to load more frameworks, you can
-# do that here too.
 framework 'Cocoa'
 framework 'WebKit'
 

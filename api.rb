@@ -1,6 +1,6 @@
 module TermiteAPI
 
-  class Worker < NSObject
+  class Worker
     def reset()
       NSLog("reset!")      
     end
@@ -10,7 +10,7 @@ module TermiteAPI
     end
   end
 
-  class Soldier < NSObject
+  class Soldier
     def reset()
       NSLog("reset!")      
     end
@@ -20,7 +20,7 @@ module TermiteAPI
     end
   end
 
-  class Watcher < NSObject
+  class Watcher
     def reset()
       NSLog("reset!")      
     end

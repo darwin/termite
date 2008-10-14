@@ -10,7 +10,7 @@
 
 require 'irb'
 
-class ConsoleWindowController < NSObject
+class ConsoleWindowController
   attr_accessor :window, :textview, :console
   def initWithFrame(frame)
     init
@@ -106,7 +106,7 @@ end
 
 # this is an output handler for IRB 
 # and a delegate and controller for an NSTextView
-class RubyConsole < NSObject
+class RubyConsole
   attr_accessor :textview, :inputMethod
 
   def initWithTextView(textview)
@@ -269,7 +269,7 @@ module IRB
   end
 end
 
-class ApplicationDelegate < NSObject
+class ApplicationDelegate
   def applicationDidFinishLaunching(sender)
     $consoleWindowController = ConsoleWindowController.alloc.initWithFrame([50,50,600,300])
     $consoleWindowController.run
