@@ -15,12 +15,11 @@ class Terminal
   end
   
   def find_terminal_tab(title)
-    title2 = "#{title}+SIMBL"
     @term.windows.get.each do |win|
       begin
         win.tabs.get.each do |tab|
           tab_title = tab.custom_title.get()
-          return tab if tab_title == title || tab_title == title2
+          return tab if tab_title == title || tab_title == "#{title}+SIMBL"
         end
       rescue
         NSLog("Problem with asking terminal window: #{win}")
@@ -85,7 +84,7 @@ class Terminal
     begin
       # here I use contents which should return only visible text in terminal window
       # we expect the prompt to fit on the screen
-      current = @tab.contents.get() 
+      current = String.new(@tab.contents.get())
     rescue
       NSLog("Terminal lost: #{$!}")
       @stopped = true
@@ -102,6 +101,7 @@ class Terminal
     prompt = current[nl..-1]
     prompt.strip
     rescue
+    NSLog("get_prompt failed: " + $!)
     ""
   end
   
@@ -111,7 +111,7 @@ class Terminal
       # but unfortunatelly, there is no other API to read content incrementally.
       # TODO: !!! DO NOT set document scrollback limit in Terminal.app preferences (Settings -> Window -> Scrollback)
       begin
-        current = @tab.history.get()
+        current = String.new(@tab.history.get())
       rescue
         NSLog("Terminal lost: #{$!}")
         @stopped = true
@@ -157,7 +157,8 @@ class Terminal
       nl = current.rindex("\n")
     end
     slice
-    rescue 
+    rescue
+    NSLog("get_content failed: " + $!)
     ""
   end
 

@@ -38,14 +38,14 @@ class MainController < NSObject
   def scroll_to_bottom()
     return unless @doc
     body = @doc.body
-    body.setValue_forKey_(body.valueForKey("scrollHeight"), "scrollTop")
+    body.setValue(body.valueForKey("scrollHeight"), forKey:"scrollTop")
   end
   
   def emit_code(code)
     return unless code
     @content += code
     @doc = @webView.mainFrameDocument.taint unless @doc
-    @container = @doc.getElementById_("container") unless @container
+    @container = @doc.getElementById("container") unless @container
     return unless @doc and @container
     scroll = scrolled_to_bottom?()
     @container.innerHTML += code
