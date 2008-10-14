@@ -3,7 +3,7 @@ require 'io/wait'
 class Terminal
   attr_accessor :tab, :suspended, :term
   
-  PIPE_PATH = "/Users/woid/.Termite"
+  PIPE_PATH = File.expand_path("~/.Termite")
   
   def initialize()
     $terminal = self
