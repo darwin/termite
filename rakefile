@@ -1,5 +1,9 @@
 require 'rake'
 
+ROOT_DIR = File.expand_path('.')
+APP_DIR = File.join(ROOT_DIR, 'app')
+XCODE_PROJECT = File.join(APP_DIR, 'Termite.xcodeproj')
+
 begin
   require 'rubygems'
   require 'jeweler'
@@ -18,5 +22,12 @@ end
 
 desc "opens XCode project"
 task :open do 
-  `open app/termite.xcodeproj`
+  `open "#{XCODE_PROJECT}"`
+end
+
+desc "builds project"
+task :build do
+  Dir.chdir(APP_DIR) do
+    `xcodebuild -configuration Release 1>&2`
+  end
 end
