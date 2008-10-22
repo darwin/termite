@@ -46,13 +46,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				76F0A5A20E9C353C00361983 /* Source */,
-				76BD06280E97C5F100A3264E /* Other Sources */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				76BD06280E97C5F100A3264E /* Ruby Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -112,14 +104,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		76BD06280E97C5F100A3264E /* Other Sources */ = {
+		76BD06280E97C5F100A3264E /* Ruby Sources */ = {
 			isa = PBXGroup;
 			children = (
 				76DF48B60EAF6470001945C8 /* src */,
 				76BD06380E97C63A00A3264E /* lib */,
 				76BD062C0E97C60A00A3264E /* main.rb */,
 			);
-			name = "Other Sources";
+			name = "Ruby Sources";
 			sourceTree = "<group>";
 		};
 		76F0A5A20E9C353C00361983 /* Source */ = {

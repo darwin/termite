@@ -1,0 +1,22 @@
+require 'rake'
+
+begin
+  require 'rubygems'
+  require 'jeweler'
+  Jeweler.gemspec = Gem::Specification.new do |s|
+    s.name = "termite"
+    s.summary = "Terminal echoizer"
+    s.email = "antonin@hildebrand.cz"
+    s.homepage = "http://github.com/woid/termite"
+    s.description = "Look for termite.* gems on github"
+    s.authors = ["Antonin Hildebrand"]
+    s.files =  FileList["{build}/**/*"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
+
+desc "opens XCode project"
+task :open do 
+  `open app/termite.xcodeproj`
+end

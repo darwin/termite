@@ -1,4 +1,5 @@
 build
-termite.xcodeproj/woid.mode1v3
-termite.xcodeproj/woid.pbxuser
+app/termite.xcodeproj/woid.mode1v3
+app/termite.xcodeproj/woid.pbxuser
 .DS_Store
+tmp
