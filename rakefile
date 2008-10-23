@@ -14,7 +14,8 @@ begin
     s.homepage = "http://github.com/woid/termite"
     s.description = "Look for termite.* gems on github"
     s.authors = ["Antonin Hildebrand"]
-    s.files =  FileList["{build}/**/*"]
+    s.files =  FileList["build/Termite.app/**/*", "{lib,bin}/**/*", "VERSION.yml"]
+    s.executables = ['termite']
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
@@ -30,4 +31,16 @@ task :build do
   Dir.chdir(APP_DIR) do
     `xcodebuild -configuration Release 1>&2`
   end
+end
+
+desc "prepares release"
+task :test_install => [:build, :gemspec] do
+  puts "Building gem ..."
+  `gem build termite.gemspec 1>&2`
+  puts "Uninstalling previous gem"
+  `sudo macgem uninstall termite 1>&2`
+  puts "Installing gem"
+  `sudo macgem install termite-*.gem 1>&2`
+  puts "Cleaning gem"
+  `rm termite-*.gem`
 end

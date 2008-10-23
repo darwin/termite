@@ -3,3 +3,4 @@ app/Termite.xcodeproj/woid.mode1v3
 app/Termite.xcodeproj/woid.pbxuser
 .DS_Store
 tmp
+*.gem

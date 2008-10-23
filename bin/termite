@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+# This script watches modifications on the given directories, using the new # FSEvents API in Leopard.
+# Depends on rubycocoa!
+# Needs rubygems and json gem!
+
+# Based on code by Dave Dribin
+# http://www.dribin.org/dave/blog/archives/2008/01/04/fswatch/
+
+require 'set'
+require 'optparse'
+require 'ostruct'
+require "yaml"
+begin
+    require 'termite'
+rescue LoadError
+    require '../lib/termite.rb'
+end
+
+module Termite
+
+    ################################################################################
+    # command-line parsing
+
+    $COMMAND = File.basename($0)
+    $USAGE = "Usage: #{$COMMAND} [OPTIONS]"
+
+    options = OpenStruct.new
+    options.output = "-"
+    options.config = nil
+
+    opts = OptionParser.new do |o|
+        o.banner = $USAGE
+        o.separator ""
+        o.separator "Specific options:"
+
+        o.on_tail("-h", "--help", "Show this message") do
+            puts o
+            exit(0)
+        end
+
+        o.on_tail("-v", "--version", "Show version") do
+            VER = YAML::load_file(File.join(ROOT_PATH, 'VERSION.yml'))
+            puts "#{VER['major']}.#{VER['minor']}.#{VER['patch']}"
+            exit(0)
+        end
+    end
+
+    begin
+        opts.parse!(ARGV)
+    rescue
+        puts "Unable to parse options: #{$!}"
+        exit(1)
+    end
+
+    ################################################################################
+    
+    app_path = File.join(ROOT_PATH, 'build', 'Termite.app')
+    puts "Running #{app_path} ..."
+    `open "#{app_path}"`
+    
+    exit(0)
+end
