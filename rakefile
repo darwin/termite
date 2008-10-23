@@ -43,11 +43,12 @@ task :test_install => [:build, :gemspec] do
   `sudo macgem install termite-*.gem 1>&2`
   puts "Cleaning gem"
   `rm termite-*.gem`
-  puts "Reverting changes to binary"
+  puts "Reverting changes to build directory"
   `git checkout build`
 end
 
 desc "prepares release"
 task :release => [:build] do
+  puts "Describe release in commit message"
   `git commit -a`
 end
