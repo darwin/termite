@@ -33,7 +33,7 @@ task :build do
   end
 end
 
-desc "prepares release"
+desc "prepares test release and installs it"
 task :test_install => [:build, :gemspec] do
   puts "Building gem ..."
   `gem build termite.gemspec 1>&2`
@@ -43,4 +43,11 @@ task :test_install => [:build, :gemspec] do
   `sudo macgem install termite-*.gem 1>&2`
   puts "Cleaning gem"
   `rm termite-*.gem`
+  puts "Reverting changes to binary"
+  `git checkout build`
+end
+
+desc "prepares release"
+task :release => [:build] do
+  `git commit -a`
 end
